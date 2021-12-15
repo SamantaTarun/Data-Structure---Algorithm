@@ -71,7 +71,7 @@ void merge_union(int a,int b)
 	
 	par[a]=b;
 }
-int main()
+int32_t main()
 {
 	//s_t_s();
 	//ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);       

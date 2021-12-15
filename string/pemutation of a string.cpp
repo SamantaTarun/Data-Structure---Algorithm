@@ -1,77 +1,41 @@
-#include<stdio.h>
-#include<string.h>
+#include<bits/stdc++.h>
 
-void sort(char arr[], int n);
-void permutationWrapper(char a[], int n);
-void permute(char a[], int n, int selected[], int used[], int index);
+using namespace std;
 
-#define MAX_SIZE 20
 
+void Permute(string a,int l,int r)
+{
+	//Base Case
+	if(l==r)
+	   cout<<a<<endl;
+	   
+	else
+	{
+		for(int i=1;i<=r;i++)
+		{
+			swap(a[l],a[i]);
+			
+			Permute(a,l+1,r);
+			
+			swap(a[l],a[i]);
+		}
+	}
+}
 int main()
 {
-  // Get the n elements as an input and store in arr
-  char arr[MAX_SIZE];
-  scanf("%s", arr);
-  
-  int n = strlen(arr);
-  
-  permutationWrapper(arr, n);
-  return 0;
-}
-
-void sort(char arr[], int n)
-{
-    int i, j;
-    for(i = 1; i < n; i++)
-    {
-        int tmp = arr[i];
-        for(j = i - 1; j >= 0; j--)
-        {
-            if(arr[j + 1] < arr[j])
-            {
-                arr[j + 1] = arr[j];
-            }
-            else
-            {
-                break;
-            }   
-        }
-        arr[j + 1] = tmp;
-    }
-}
-
-void permutationWrapper(char a[], int n)
-{
-    sort(a, n);
-    int selected[MAX_SIZE] = {}, used[MAX_SIZE] = {};
-    permute(a, n, selected, used, 0);
-}
-
-void permute(char a[], int n, int selected[], int used[], int index)
-{
-  	int i;
-    if(index == n)
-    {
-        for(i=0; i<n; i++)
-        {
-            printf("%c",selected[i]);
-        }
-        
-        printf("\n");
-        
-        return;
-    }
-    
-    for(i=0; i<n; i++)
-    {
-        if(used[i] == 1)
-        {
-            continue;
-        }
-        
-        used[i] = 1;
-        selected[index] = a[i];
-        permute(a, n, selected, used, index + 1);
-        used[i] = 0;
-    }
+	int t;
+	cin>>t;
+	while(t--)
+	{
+		string s;
+	
+		cin>>s;
+		
+		Permute(s,0,s.length()-1);
+	}
+	
+	
+	return 0;
+	
+	//return 0;
 }

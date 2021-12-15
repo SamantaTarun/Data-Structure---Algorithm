@@ -2,7 +2,7 @@
 
 #include<bits/stdc++.h>
 //#define<windows.h>
-//prime fctorization
+//prime fctorization  
 //#include<ext.pb_ds/assoc_container.hpp>
 //using namespace __gnu_pbds;
 using namespace std;
@@ -45,7 +45,7 @@ int visited[10001];
 int dist[10001];
 vi arr[10001];
 int col[10001];
-vector<int>suspecious;
+
 bool dfs(int v,int par)
 {
 	visited[v]=1;
@@ -54,29 +54,15 @@ bool dfs(int v,int par)
 		if(visited[child]==0)
 		{
 			if(dfs(child,v)==true)
-            {
-                //return true;
-                suspecious.push_back(child);
-                 suspecious.push_back(v);
-            }
-
+			  return true;
 		}
 		else
-        {
-            if(child!=par)
-           {
-            //return true;
-             suspecious.push_back(child);
-             suspecious.push_back(v);
-           }
-        }
-
-
-
+		if(child!=par)
+		   return true;
 	}
-
-	//return false;
-
+    
+	return false;	
+		  
 }
 int main()
 {
@@ -86,28 +72,22 @@ int main()
 	cin>>n>>m;
 	memset(visited,0,sizeof(visited));
 	memset(col,0,sizeof(col));
-
+	
 	for(int i=1;i<=m;i++)
 	{
 		int a,b;
 		cin>>a>>b;
 		arr[a].push_back(b);
 		arr[b].push_back(a);
-
+		
 	}
-
-
+    
     if(dfs(1,-1)==true)
     {
     	cout<<"The given graph contains cycle\n";
 	}
 	else
 	   cout<<"The given graph not contains any cycle\n";
-
-    for(auto i:suspecious)
-    {
-        cout<<i<<" ";
-    }
 	return 0;
 }
 

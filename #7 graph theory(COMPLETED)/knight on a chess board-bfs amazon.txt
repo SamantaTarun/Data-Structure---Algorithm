@@ -1,0 +1,44 @@
+//knighton a chess board vvi -amazon-bfs
+
+bool isValid(int x,int y,int N,int M){
+
+    if(x<=0 || y<=0 || x>N || y>M)
+       return false;
+    return true;
+}
+int Solution::knight(int A, int B, int C, int D, int E, int F) {
+
+    int dx[]={-1,-2,-1,-2,1,2,1,2};
+    int dy[]={-2,-1,2,1,-2,-1,2,1};
+    bool visited[A+1][B+1];
+    memset(visited,false,sizeof(visited));
+
+    queue<pair<int,int> >q;
+    q.push({C,D});
+    visited[C][D]=true;
+
+    int moveCount=0;
+    while(!q.empty()){
+
+        int size=q.size();
+        for(int count=0;count<size;count++){
+
+            int x=q.front().first;
+            int y=q.front().second;
+
+            q.pop();
+
+            if(x==E && y==F)
+               return moveCount;
+
+            for(int i=0;i<8;i++){
+                if(isValid(x+dx[i],y+dy[i],A,B)==true && visited[x+dx[i]][y+dy[i]]==false){
+                    q.push({x+dx[i],y+dy[i]});
+                    visited[x+dx[i]][y+dy[i]]=true;
+                }
+            }
+        }
+        moveCount++;
+    }
+    return -1;
+}

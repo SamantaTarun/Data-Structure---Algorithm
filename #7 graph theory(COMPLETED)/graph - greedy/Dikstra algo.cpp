@@ -2,7 +2,7 @@
 
 #include<bits/stdc++.h>
 //#define<windows.h>
-//prime fctorization
+//prime fctorization  
 //#include<ext.pb_ds/assoc_container.hpp>
 //using namespace __gnu_pbds;
 using namespace std;
@@ -46,32 +46,32 @@ vii adj[1001];
 int32_t main()
 {
 	//s_t_s();
-	//ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+	//ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);       
 	int n,m,a,b,w;
-
+	
 	cin>>n>>m;
-
+	
 	while(m--)
 	{
 		cin>>a>>b>>w;
 		adj[a].pb({b,w});
-		//adj[b].pb({a,w});
+		adj[b].pb({a,w});
 	}
-
+	
 	priority_queue<pair<int,int>, vector<pair<int,int>>, greater<pair<int,int>>> pq;
-
+	
 	vector<int> dist(n+1, INF);
-
+	
 	pq.push({0,1});
-
+	
 	dist[1]=0;
-
+	
 	while(!pq.empty())
 	{
 		int curr=pq.top().second;
 		int curr_d=pq.top().first;
 		pq.pop();
-
+		
 		for(pair<int,int> edge: adj[curr])
 		{
 			if(curr_d+edge.second<dist[edge.first])
@@ -81,13 +81,13 @@ int32_t main()
 			}
 		}
 	}
-
+	
 	for(int i=1;i<=n;i++)
 	{
 		cout<<dist[i]<<" ";
 	}
-
-
+	
+	
 	return 0;
 }
 

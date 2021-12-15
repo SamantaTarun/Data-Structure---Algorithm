@@ -1,7 +1,7 @@
 //SUBLIME TEXT
 #include<bits/stdc++.h>
 //#define<windows.h>
-//prime fctorization
+//prime fctorization  
 //#include<ext.pb_ds/assoc_container.hpp>
 //using namespace __gnu_pbds;
 using namespace std;
@@ -53,10 +53,10 @@ void dfs(int v)
 		{
 			 dist[child]=dist[v]+1;
 			 dfs(child);
-
+		     
 	    }
     }
-
+		  
 }
 int main()
 {
@@ -66,14 +66,14 @@ int main()
 	cout<<"Enter the number of vertices and edges: ";
 	cin>>N>>M;
 	memset(visited,0,sizeof(visited));
-
+	
 	while(M--)
 	{
 		int a,b;
 		cin>>a>>b;
 		arr[a].push_back(b);
-		//arr[b].push_back(a);
-
+		arr[b].push_back(a);
+		
 	}
     for(int i=1;i<=N;i++)
     {
@@ -99,7 +99,7 @@ int main()
 	cout<<endl<<count;
 	cout<<endl;
 	//Single Source Shortest path
-	for(int i=1;i<=100;i++)
+	for(int i=1;i<=N;i++)
 	{
 		cout<<dist[i]<<" ";
 	}

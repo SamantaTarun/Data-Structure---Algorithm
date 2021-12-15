@@ -29,7 +29,7 @@ using namespace std;
 const double PI=3.141592653589793238460;
 typedef std::complex<double> Complex;
 //mt19937					rng(chrono::steady_clock::now().time_since_epoch().count)
-/*
+
 void s_t_s()
 {
 	ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
@@ -38,7 +38,6 @@ void s_t_s()
 	freopen("output.txt", "w", stdout);
   #endif
 }
-*/
 
 vi arr[10001];
 int in[10001],out[10001];
@@ -49,7 +48,7 @@ bool DFS(int v)
 {
 	visited[v]=1;
 	in[v]=timer++;
-
+	
 	for(int child:arr[v])
 	{
 		if(visited[child]==0)
@@ -61,32 +60,32 @@ bool DFS(int v)
 }
 int32_t main()
 {
-	//s_t_s();
+	s_t_s();
 	//ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 	int n,q,a,b;
-
-
+	
+	
 	cin>>n>>q;
-
+	
     for(int i=1;i<=n-1;i++)
     {
     	cin>>a>>b;
     	arr[a].pb(b);
     	arr[b].pb(a);
 	}
-
+	
 	DFS(1);
 	for(int i=1;i<=n;i++)
 	{
 		cout<<in[i]<<" ";
 	}
 	cout<<endl;
-
+	
 	for(int i=1;i<=n;i++)
 	{
 		cout<<out[i]<<" ";
 	}
-
+	
 	cout<<endl;
 	//Whether one node lies in the subtree of other node
 	while(q--)

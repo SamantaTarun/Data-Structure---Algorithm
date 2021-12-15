@@ -2,7 +2,7 @@
 
 #include<bits/stdc++.h>
 //#define<windows.h>
-//prime fctorization
+//prime fctorization  
 //#include<ext.pb_ds/assoc_container.hpp>
 //using namespace __gnu_pbds;
 using namespace std;
@@ -49,7 +49,7 @@ void BFS(int src)
 	q.push(src);
 	visited[src]=1;
 	dist[src]=0;
-
+	
 	while(!q.empty())
 	{
 		int curr=q.front();
@@ -66,20 +66,19 @@ void BFS(int src)
 int32_t main()
 {
 	//s_t_s();
-	//ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+	//ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);                                                            
     int n,m,a,b;
     w(t)
     {
     	cin>>n>>m;
     	for(int i=1;i<=n;i++) arr[i].clear(), visited[i]=0;
-
+    	
     	while(m--) cin>>a>>b, arr[a].pb(b), arr[b].pb(a);
-
+    	
     	BFS(1);
-
-    	for(int i=0;i<n;i++)
-            cout<<dist[i]<<" ";
-    	//cout<<dist[n]<<endl;
+    	
+    	
+    	cout<<dist[n]<<endl;
 	}
 	return 0;
 }
