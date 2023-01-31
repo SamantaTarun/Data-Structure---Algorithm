@@ -9,6 +9,8 @@ struct Queue
     int *Q;
 };
 
+
+
 void Create(struct Queue *q,int size)
 {
     q->size=size;
